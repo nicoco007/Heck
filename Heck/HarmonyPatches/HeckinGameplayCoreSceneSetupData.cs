@@ -28,7 +28,11 @@ namespace Heck.HarmonyPatches
             EnvironmentInfoSO environmentInfo,
             ColorScheme colorScheme,
             MainSettingsModelSO mainSettingsModel,
-            BeatmapDataCache? beatmapDataCache = null)
+            BeatmapDataCache? beatmapDataCache = null
+#if LATEST
+            , RecordingToolManager.SetupData? recordingToolData = null
+#endif
+            )
             : base(
                 difficultyBeatmap,
                 previewBeatmapLevel,
@@ -39,7 +43,11 @@ namespace Heck.HarmonyPatches
                 environmentInfo,
                 colorScheme,
                 mainSettingsModel,
-                beatmapDataCache)
+                beatmapDataCache
+#if LATEST
+                , recordingToolData
+#endif
+                )
         {
         }
 

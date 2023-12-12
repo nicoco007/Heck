@@ -31,7 +31,10 @@ namespace Heck.HarmonyPatches
                 typeof(GameplayModifiers),
                 typeof(PlayerSpecificSettings), typeof(PracticeSettings), typeof(string), typeof(bool), typeof(bool),
                 typeof(Action), typeof(Action<StandardLevelScenesTransitionSetupDataSO, LevelCompletionResults>),
-                typeof(Action<LevelScenesTransitionSetupDataSO, LevelCompletionResults>)
+                typeof(Action<LevelScenesTransitionSetupDataSO, LevelCompletionResults>),
+#if LATEST
+                typeof(RecordingToolManager.SetupData?),
+#endif
             });
 
         private static readonly MethodInfo _startMultiplayerLevel = AccessTools.Method(

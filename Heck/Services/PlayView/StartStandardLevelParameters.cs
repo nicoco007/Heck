@@ -23,7 +23,11 @@ namespace Heck.PlayView
             bool startPaused,
             Action beforeSceneSwitchCallback,
             Action<StandardLevelScenesTransitionSetupDataSO, LevelCompletionResults>? levelFinishedCallback,
-            Action<LevelScenesTransitionSetupDataSO, LevelCompletionResults>? levelRestartedCallback)
+            Action<LevelScenesTransitionSetupDataSO, LevelCompletionResults>? levelRestartedCallback
+#if LATEST
+            , RecordingToolManager.SetupData? recordingToolData
+#endif
+            )
         {
             GameMode = gameMode;
             DifficultyBeatmap = difficultyBeatmap;
@@ -42,6 +46,9 @@ namespace Heck.PlayView
             BeforeSceneSwitchCallback = beforeSceneSwitchCallback;
             LevelFinishedCallback = levelFinishedCallback;
             LevelRestartedCallback = levelRestartedCallback;
+#if LATEST
+            RecordingToolData = recordingToolData;
+#endif
         }
 
         public StartStandardLevelParameters(StartStandardLevelParameters original)
@@ -63,6 +70,9 @@ namespace Heck.PlayView
             BeforeSceneSwitchCallback = original.BeforeSceneSwitchCallback;
             LevelFinishedCallback = original.LevelFinishedCallback;
             LevelRestartedCallback = original.LevelRestartedCallback;
+#if LATEST
+            RecordingToolData = original.RecordingToolData;
+#endif
         }
 
         public string GameMode { get; }
@@ -96,6 +106,10 @@ namespace Heck.PlayView
         public Action<StandardLevelScenesTransitionSetupDataSO, LevelCompletionResults>? LevelFinishedCallback { get; }
 
         public Action<LevelScenesTransitionSetupDataSO, LevelCompletionResults>? LevelRestartedCallback { get; }
+
+#if LATEST
+        public RecordingToolManager.SetupData? RecordingToolData { get; }
+#endif
 
         public virtual StartStandardLevelParameters Copy()
         {

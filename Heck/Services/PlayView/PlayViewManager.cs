@@ -240,7 +240,11 @@ namespace Heck.PlayView
                 _currentParameters.BeforeSceneSwitchCallback,
                 null,
                 _currentParameters.LevelFinishedCallback,
-                _currentParameters.LevelRestartedCallback);
+                _currentParameters.LevelRestartedCallback
+#if LATEST
+                , _currentParameters.RecordingToolData
+#endif
+                );
         }
 
         internal class PlayViewControllerData
